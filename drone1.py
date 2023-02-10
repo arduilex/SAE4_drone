@@ -25,8 +25,9 @@ if __name__ == '__main__':
         # We take off when the commander is created
         with MotionCommander(scf) as mc:
             print('Taking off!')
-            time.sleep(1)
-            
+            time.sleep(1)          
+
+
             # There is a set of functions that move a specific distance
             # We can move in all directions
             print('Moving up 0.2m')
@@ -34,7 +35,11 @@ if __name__ == '__main__':
             # Wait a bit
             #mc._is_flying=False
             mc.up(1,velocity=1)
+            time.sleep(1)
+            print("!!!!")
+            mc.start_linear_motion(0, 0, 0.08)
             time.sleep(7)
+            mc.stop()
 
             print('Moving down 0.2m')
             mc.down(1.2,velocity=0.5)
