@@ -34,10 +34,11 @@ if __name__ == '__main__':
             #mc.take_off(3,0.2)
             # Wait a bit
             #mc._is_flying=False
-            mc.up(1,velocity=1)
+            mc.up(5,velocity=1)
             time.sleep(1)
             print("!!!!")
-            mc.start_linear_motion(0, 0, 0.08)
+            mc.start_linear_motion(0, 0.00, 0.2)
+            
             time.sleep(7)
             mc.stop()
 
