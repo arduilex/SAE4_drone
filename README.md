@@ -1,5 +1,4 @@
 # Guide SAE drone
-Ce projet à été réalisé 
 
 
 ## Installation
