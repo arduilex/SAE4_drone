@@ -1,0 +1,60 @@
+8/02/2023
+
+Avancement:
+
+    Modification du programme de test en python pour réaliser un décollage du drône
+    Modification du programme pour trouver une bonne valeur dans le but de le stabiliser dans les airs.
+    Utilisation du client Crazyfile
+    Initialisation du Loco Positioning System (LPS) avec 3 balises
+
+Problèmes rencontrées:
+
+    Impossibilité de faite décoller le drône du sol à l’aide de la librairie MotionCommander (avec ou sans le module, et modifiant la vélocité)
+    Plantage du système lors de l’utilisation du client Crazyfile sous Linux
+    Impossible de contrôler le drône à l’aide du client Crazyfile
+    Les moteurs du drônes ne démarre plus lors de l’exécution consécutive d’un programme. Seul le redémarrage du drône corrige le problème.
+    Lors de cette séance, nous avons repris le programme “test-drone.py” qui nous a été fournit p
+
+
+10/02/2023
+
+Avancement : 
+
+  Des lycéens sont venus nous rendre visite, nous avons pu leur expliquer notre SAE ainsi que montrer une bref démonstration d’un décollage et atterrissage d’un drone.cv
+nous avons positionné les balises GPS dans la salle de soustraction en suivant la documentation
+  Sur le client crazy flight nous avons réussi à placer dans l’environnement virtuel les balises
+
+Problèmes rencontrées:
+
+    La documentation est très sommaire quant aux différents problèmes qu’on peut rencontrer.
+    Une des balises ne fonctionne pas correctement, n'étant pas arriver à trouver l’origine du problème, nous en utilisant une autre pour l’instant.
+    Difficulté à stabiliser le drone dans les airs sur l’axe z, nous pensons que nous pourrons utiliser le loco positionning system pour corriger cela.
+
+
+15/02/2023
+
+Avancement:
+
+    Teste de contrôle d’un drône avec une manette à l’aide du logiciel fournit
+    Analyse et récupération du code source du logiciel pour notre code personnel
+    Position du drône en temps réel sur le Crazyflie Client sur un plan avec la position des balises
+
+Problèmes rencontrées:
+
+    Partie du drône s’est cassé lors d’une manipulation d’un des drônes
+    Perturbations rencontrées lors de l’utilisation d’un drône à l’autre bout de la salle
+
+
+03/03/2023
+
+Avancement:
+
+    Suite de l’analyse du code source du logiciel.
+    Recherche sur les fonctions dédies aux balises du LPS.
+    Premieres tentatives de vol en envoyant des coordonnées au drone.
+    Installation du support package sur MatLab pour les parrot drones.
+
+Problèmes rencontrées:
+
+    Les pins qui relient les drones aux modules LPS ont tendance à se mouvoir, ce qui peut provoquer une deconnexion du module.
+    L’envol des drones a encore du mal à bien fonctionner.
