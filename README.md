@@ -1,1 +1,13 @@
-# Bienvenue sur notre SAE drone
+# Guide SAE drone
+Ce projet à été réalisé 
+
+
+## Installation
+Commencer par charger les drones avec un cables micro usb 
+> 20min de 0% à 100%
+
+### Installation des modules loco positioning
+Placer les 8 modules de position (voir figure1)  
+COnnecter le module a une batteire externe
+
+![figure1](images/module_loco_zoom.jpg)
