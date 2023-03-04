@@ -1,6 +1,6 @@
 # Bienvenue sur le projet SAE4 Drônes 
 
-![figure0](images/iut_mulhouse.jpg)
+![figure0](images/iut_mulhouse.png)
 
 ### Equipe : Alexandre BADER / Kévin TRAN / Romain KLEINKLAUS / Aklaa MAYABA
 
