@@ -38,3 +38,5 @@ Il est possible de contrôler et visualiser les différentes données envoyées 
 #### Utilisation d'un programme Python
 
 On peut également réaliser un programme Python utilisant les librairies fournient par Crazyflie.
+
+![figure4](images/code_python.png)
