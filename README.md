@@ -7,6 +7,6 @@ Commencer par charger les drones avec un cables micro usb
 
 ### Installation des modules loco positioning
 Placer les 8 modules de position (voir figure1)  
-COnnecter le module a une batteire externe
+Connecter le module a une batteire externe
 
 ![figure1](images/module_loco_zoom.jpg)
