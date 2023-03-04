@@ -7,11 +7,11 @@
 ### Référents : M. Eric HUEBER / M. Benjamin MOURLLION 
 
 
-## Guide SAE drone
+## Guide de fonctionnement de notre SAE
 
 
 ### Installation
-Commencer par charger les drones avec un cables micro usb 
+Commencer par charger les drône à l'aide d'un cable micro usb 
 > 20min de 0% à 100%
 
 #### Installation des modules loco positioning
@@ -22,6 +22,18 @@ Connecter le module a une batterie externe
 
 #### Initialisation des drônes
 Appuyer sur le bouton d'allumage des drônes, le drône s'initialise.
-On peut désormais s'y connecter depuis un PC.
+
+> On peut désormais s'y connecter depuis un PC.
 
 ![figure2](images/bouton_allumage_drone.jpg)
+
+### Commande des drônes à distance
+
+#### Utilisation du Crazyflie Client
+
+Il est possible de contrôler et visualiser les différentes données envoyées par le drône en passant par le client fournis par Crazyflie.
+
+
+#### Utilisation d'un programme Python
+
+On peut également réaliser un programme Python utilisant les librairies fournient par Crazyflie.
