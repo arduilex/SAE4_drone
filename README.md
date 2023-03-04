@@ -33,7 +33,7 @@ Appuyer sur le bouton d'allumage des drônes, le drône s'initialise.
 
 Il est possible de contrôler et visualiser les différentes données envoyées par le drône en passant par le client fournis par Crazyflie.
 
-![figure3](images/crazyflie_client.jpg)
+![figure3](images/crazyflie_client.png)
 
 #### Utilisation d'un programme Python
 
