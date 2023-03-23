@@ -42,7 +42,6 @@ On peut également réaliser un programme Python utilisant les librairies fourni
 ![figure4](images/code_python.png)
 
 #### Vidéos des premiers tests de vol.
-[![Final video of fixing issues in your code in VS Code]
-(https://www.img.youtube.com/shorts/r6u5RcOwqho/maxresdefault.jpg)]
+
 (https://www.youtube.com/shorts/r6u5RcOwqho)
 
