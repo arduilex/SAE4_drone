@@ -40,3 +40,7 @@ Il est possible de contrôler et visualiser les différentes données envoyées 
 On peut également réaliser un programme Python utilisant les librairies fournient par Crazyflie.
 
 ![figure4](images/code_python.png)
+
+#### Vidéos des premiers tests de vol.
+
+https://youtube.com/shorts/r6u5RcOwqho?feature=share
