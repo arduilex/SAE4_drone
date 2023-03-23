@@ -43,5 +43,6 @@ On peut également réaliser un programme Python utilisant les librairies fourni
 
 #### Vidéos des premiers tests de vol.
 
-(https://www.youtube.com/shorts/r6u5RcOwqho)
+https://www.youtube.com/shorts/r6u5RcOwqho
 
+https://youtube.com/shorts/18h9I9uDpAo
