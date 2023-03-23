@@ -43,6 +43,8 @@ On peut également réaliser un programme Python utilisant les librairies fourni
 
 #### Vidéos des premiers tests de vol.
 
+1er test de vol en utilisant les fonctions sur Python :
 https://www.youtube.com/shorts/r6u5RcOwqho
 
+1er test de vol en utilisant la fonction linear motion qui permet de controller la velocité du vol :
 https://youtube.com/shorts/18h9I9uDpAo
