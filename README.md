@@ -7,32 +7,36 @@
 ### Référents : M. Eric HUEBER / M. Benjamin MOURLLION 
 
 
-## Guide de fonctionnement de notre SAE
+## Guide d'installation et de fonctionnement de notre SAE
 
 
 ### Installation
-Commencer par charger les drône à l'aide d'un câble micro usb 
-> 40min de 0% à 100%
-> 7min de temps de vol avec une charge complète
+- Commencer par charger les drône à l'aide d'un câble micro USB 
+> 40 minutes de charge pour passer de 0% à 100%
+
+> 7 minutes de temps de vol avec une charge complète du drone
 
 #### Installation des modules loco positioning
-Placer les 8 modules de position dans la salle B019
+- Placer les 8 balises de position dans la salle B019.
 
-![figure0](images/plan_balise.jpg)
+![figure0](images/plan_balises.PNG)
 
+> L'échelle du repère est en mètre.
 
-Connecter le module a une batterie externe
+- Connecter les modules aux batteries externes.
 
 ![figure1](images/module_loco_zoom.jpg)
 
+> Il faudra utiliser un câble USB vers micro USB pour alimenter les balises. 
+
 #### Initialisation des drônes
-Appuyer sur le bouton d'allumage des drônes, le drône s'initialise.
+Appuyer sur le bouton d'allumage des drones, le drone s'initialise.
 
 > On peut désormais s'y connecter depuis un PC.
 
 ![figure2](images/bouton_allumage_drone.jpg)
 
-### Commande des drônes à distance
+### Commande des drones à distance
 
 #### Utilisation du Crazyflie Client
 
@@ -46,7 +50,7 @@ On peut également réaliser un programme Python utilisant les librairies fourni
 
 ![figure4](images/code_python.png)
 
-#### Vidéos des premiers tests de vol.
+#### Vidéos des premiers tests de vol
 
 1er test de vol en utilisant les fonctions sur Python :
 https://www.youtube.com/shorts/r6u5RcOwqho
