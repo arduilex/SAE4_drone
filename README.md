@@ -11,12 +11,12 @@
 
 
 ### Installation
-Commencer par charger les drône à l'aide d'un cable micro usb 
+Commencer par charger les drône à l'aide d'un câble micro usb 
 > 40min de 0% à 100%
 > 7min de temps de vol avec une charge complète
 
 #### Installation des modules loco positioning
-Placer les 8 modules de position (voir figure1)  
+Placer les 8 modules de position dans la salle B019 (voir figure1)  
 Connecter le module a une batterie externe
 
 ![figure1](images/module_loco_zoom.jpg)
