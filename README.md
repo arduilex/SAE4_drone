@@ -12,7 +12,8 @@
 
 ### Installation
 Commencer par charger les drône à l'aide d'un cable micro usb 
-> 20min de 0% à 100%
+> 40min de 0% à 100%
+> 7min de temps de vol avec une charge complète
 
 #### Installation des modules loco positioning
 Placer les 8 modules de position (voir figure1)  
