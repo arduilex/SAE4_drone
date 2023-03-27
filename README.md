@@ -40,7 +40,7 @@ Appuyer sur le bouton d'allumage des drones, le drone s'initialise.
 
 #### Utilisation du Crazyflie Client
 
-Il est possible de contrôler et visualiser les différentes données envoyées par le drône en passant par le client fournis par Crazyflie. Ce client est disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-clients-python). Il existe différentes versions pouvant être exécutées sur différentes plateformes comme un PC sous Windows, Linux ou Mac et des appareils sous Android ou iOS. 
+Il est possible de contrôler et visualiser les différentes données envoyées par le drone et les balises en passant par le client fournis par Crazyflie. Ce client est disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-clients-python). Il existe différentes versions pouvant être exécutées sur différentes plateformes comme un PC sous Windows, Linux ou Mac et des appareils sous Android ou iOS. 
 
 ![figure3](images/crazyflie_client.png)
 
@@ -48,7 +48,7 @@ Il est possible de contrôler et visualiser les différentes données envoyées 
 
 #### Utilisation d'un programme Python
 
-On peut également réaliser un programme Python utilisant les librairies fournient par Crazyflie.
+Il est également possible d'utiliser la librairie de fonctions codé en Python disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-lib-python). En utilisant un compileur comme Visual Studio Code, on peut utiliser cette libairie pour contrôler et visualiser les données envoyées par le drone et les balises.
 
 ![figure4](images/code_python.png)
 
