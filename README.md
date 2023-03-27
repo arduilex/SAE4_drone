@@ -44,7 +44,7 @@ Il est possible de contrôler et visualiser les différentes données envoyées 
 
 ![figure3](images/crazyflie_client.png)
 
-> Le tutoriel pour l'installation de ce client est détaillé sur ce site : https://github.com/bitcraze/crazyflie-clients-python/blob/master/docs/installation/install.md
+> Le tutoriel concernant les étapes d'installation de ce client est détaillé sur ce site : https://github.com/bitcraze/crazyflie-clients-python/blob/master/docs/installation/install.md
 
 #### Utilisation d'un programme Python
 
