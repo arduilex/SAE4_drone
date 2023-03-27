@@ -30,7 +30,7 @@
 > Il faudra utiliser un câble USB vers micro USB pour alimenter les balises. 
 
 #### Initialisation des drônes
-Appuyer sur le bouton d'allumage des drones, le drone s'initialise.
+Appuyer sur le bouton de mise en marche / d'arrêt du drone, celui-ci s'initialise.
 
 > On peut désormais s'y connecter depuis un PC, un téléphone ou une tablette
 
