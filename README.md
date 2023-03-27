@@ -32,7 +32,7 @@
 #### Initialisation des drônes
 Appuyer sur le bouton d'allumage des drones, le drone s'initialise.
 
-> On peut désormais s'y connecter depuis un PC.
+> On peut désormais s'y connecter depuis un PC, un téléphone ou une tablette
 
 ![figure2](images/bouton_allumage_drone.jpg)
 
@@ -51,6 +51,8 @@ Il est possible de contrôler et visualiser les différentes données envoyées 
 Il est également possible d'utiliser la librairie de fonctions codé en Python disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-lib-python). En utilisant un compileur comme Visual Studio Code, on peut utiliser cette libairie pour contrôler et visualiser les données envoyées par le drone et les balises.
 
 ![figure4](images/code_python.png)
+
+> Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
 
 #### Vidéos des premiers tests de vol
 
