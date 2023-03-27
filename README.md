@@ -1,4 +1,4 @@
-# Bienvenue sur le projet SAE4 Drônes 
+# Bienvenue sur le projet SAE4 Drones 
 
 ![figure0](images/iut_mulhouse.png)
 
@@ -40,7 +40,8 @@ Appuyer sur le bouton d'allumage des drones, le drone s'initialise.
 
 #### Utilisation du Crazyflie Client
 
-Il est possible de contrôler et visualiser les différentes données envoyées par le drône en passant par le client fournis par Crazyflie.
+Il est possible de contrôler et visualiser les différentes données envoyées par le drône en passant par le client fournis par Crazyflie. Ce client est disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-clients-python). Il existe différentes versions pouvant être exécutées sur différentes plateformes comme un PC sous Windows, Linux ou Mac et des appareils sous Android ou iOS. 
+Le tutoriel pour l'installation de ce client est détaillé sur ce site : https://github.com/bitcraze/crazyflie-clients-python/blob/master/docs/installation/install.md
 
 ![figure3](images/crazyflie_client.png)
 
