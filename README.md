@@ -19,7 +19,7 @@
 #### Installation des modules loco positioning
 - Placer les 8 balises de position dans la salle B019.
 
-![figure0](images/plan_balises.PNG)
+![figure0](images/plan_balises.jpg)
 
 > L'échelle du repère est en mètre.
 
