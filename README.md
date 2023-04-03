@@ -54,6 +54,14 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 
 > Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
 
+#### Comportement des drones dans les airs
+
+##### Utilisation des fonctions de déplacement des drones de la librairie fournit
+
+##### Utilisation de fonctions de déplacement exploitant la position du drone
+
+#### Données récupérées sur la position du drone lors de différents essais
+
 #### Vidéos des premiers tests de vol
 
 1er test de vol en utilisant les fonctions sur Python :
