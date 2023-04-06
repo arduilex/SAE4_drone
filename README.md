@@ -19,9 +19,11 @@
 #### Installation des modules loco positioning
 - Placer les 8 balises de position dans la salle B019.
 
+
 ![figure0](images/plan_balises.jpg)
 
 > L'échelle du repère est en mètre.
+> Les balises 3 et 5 sont positionnées sur les 2 tableaux blancs présents dans la salle.
 
 - Connecter les modules aux batteries externes.
 
