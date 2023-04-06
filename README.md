@@ -85,12 +85,15 @@ Il était donc très compliqué de stabiliser le drone dans les airs avec ces fo
 
 Lors de l'utilisation de fonctions de déplacement exploitant la position du drone dans le plan crée par les balises, l'influence de la batterie sur la puissance délivrée au moteur ne nous posait plus autant de problème quant à la stabilisation du drone dans les airs et de la précision des déplacements.
 
-#### Données récupérées sur la position du drone lors de différents essais
+## Graphiques des performances concernant la position des drones dans différentes situations
 
-#### Vidéos des premiers tests de vol
+## Résultats du projet
 
+### Images et vidéos du projet
 1er test de vol en utilisant les fonctions sur Python :
 https://www.youtube.com/shorts/r6u5RcOwqho
 
 1er test de vol en utilisant la fonction linear motion qui permet de controller la velocité du vol :
 https://youtube.com/shorts/18h9I9uDpAo
+
+## Ressources annexes
