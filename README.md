@@ -75,7 +75,7 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 > Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
 
 
-## Performance des drones dans les airs
+## Contrôle des drones dans les airs
 
 ### A propos de la performance du drone dans les airs
 
@@ -93,13 +93,16 @@ Lors de l'utilisation de fonctions de déplacement exploitant la position du dro
 
 A COMPLETER
 
-### Amélioration du système concernant la position
+### Amélioration du système de contrôle de postion
 
 #### Etude de l'asservissement des drones Parrots
 Nous avons, en parallèle à notre étude des drones Crazyflie, étudié les drones Parrots et leur fonctionnement sous Matlab. Cette étude, portant plus particulièrement sur l'asservissement d'un système, nous a permis d'en apprendre plus sur le principe d'asservissement d'un drone, nous permettant de nous inspirer quant à l'application d'un asservissement sur les drones Crazyflie en nous basant sur celui appliqué aux drones Parrots.
 
+> Ceci est un exemple d'un système de contrôle de drône asservis avec un retour des informations fournies par les capteurs du drone.
+
 ![figure6](images/parrot.png)
 
+Dans ce système, nous avons en entrée une commande de position récupérée par le controlleur qui va réaliser des calculs pour faire tourner chaque hélice indépendamment les unes des autres de sorte à ce que le drone se déplace à la position envoyer à l'entrée. Ce système est bouclé, on a un retour à l'entrée des informations que fournissent les capteurs installés sur le drone, dans le but d'améliorer le système en faisant face aux perturbations.
 
 ## Résultats du projet
 
