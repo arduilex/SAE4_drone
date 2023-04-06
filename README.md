@@ -11,7 +11,7 @@
 ## Guide d'installation et de fonctionnement de notre SAE
 
 
-### Installation du matériel 
+### Installation et initialisation du matériel 
 
 Nous allons commencer par installer le matériel du kit Crazyflie qui nous a été fournit. (https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999)
 
@@ -74,7 +74,10 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 
 > Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
 
-### Commentaires par rapport à la performance du drone dans les airs
+
+## Performance des drones dans les airs
+
+### A propos de la performance du drone dans les airs
 
 #### Utilisation des fonctions de déplacement des drones de la librairie fournit
 
@@ -85,7 +88,10 @@ Il était donc très compliqué de stabiliser le drone dans les airs avec ces fo
 
 Lors de l'utilisation de fonctions de déplacement exploitant la position du drone dans le plan crée par les balises, l'influence de la batterie sur la puissance délivrée au moteur ne nous posait plus autant de problème quant à la stabilisation du drone dans les airs et de la précision des déplacements.
 
-## Graphiques des performances concernant la position des drones dans différentes situations
+
+### Graphiques des différents tests de performance
+
+A COMPLETER
 
 ## Résultats du projet
 
