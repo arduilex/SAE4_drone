@@ -74,11 +74,16 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 
 > Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
 
-#### Comportement des drones dans les airs
+### Commentaires par rapport à la performance du drone dans les airs
 
-##### Utilisation des fonctions de déplacement des drones de la librairie fournit
+#### Utilisation des fonctions de déplacement des drones de la librairie fournit
 
-##### Utilisation de fonctions de déplacement exploitant la position du drone
+Lors de l'utilisation de fonctions permettant de déplacer le drone dans les airs sans l'exploitation de quelconques informartions de position, il faut préciser une commande de vitesse pour les moteurs lors de chaque déplacement. Le résultat de l'utilisation de ces fonctions n'est pas toujours le même, nous avons remarqué que le niveau du batterie d'un drone va influer sur la puissance délivrer au moteur quelque soit la commande de vitesse envoyée.
+Il était donc très compliqué de stabiliser le drone dans les airs avec ces fonctions, les déplacements étant très instable et non précis, les fonctions créant un résultat différent à chaque exécution.
+
+#### Utilisation des fonctions de déplacement exploitant la position du drone
+
+Lors de l'utilisation de fonctions de déplacement exploitant la position du drone dans le plan crée par les balises, l'influence de la batterie sur la puissance délivrée au moteur ne nous posait plus autant de problème quant à la stabilisation du drone dans les airs et de la précision des déplacements.
 
 #### Données récupérées sur la position du drone lors de différents essais
 
