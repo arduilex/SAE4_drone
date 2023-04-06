@@ -93,6 +93,11 @@ Lors de l'utilisation de fonctions de déplacement exploitant la position du dro
 
 A COMPLETER
 
+### Amélioration du système concernant la position
+
+#### Etude de l'asservissement des drones Parrots
+Nous avons, en parallèle à notre étude des drones Crazyflie, étudié les drones Parrots et leur fonctionnement sous Matlab. Cette étude, portant plus particulièrement sur l'asservissement d'un système, nous a permis d'en apprendre plus sur le principe d'asservissement d'un drone, nous permettant de nous inspirer quant à l'application d'un asservissement sur les drones Crazyflie en nous basant sur celui appliqué aux drones Parrots.
+
 ## Résultats du projet
 
 ### Images et vidéos du projet
