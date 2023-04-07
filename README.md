@@ -72,7 +72,7 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 
 <img src="images/code_python.png" width="480">
 
-#### Utilisation de notre IHM
+#### Utilisation d'une IHM
 
 En tant qu'alternative au Crazyflie Client, il est possible d'utiliser l'IHM que nous avons réalisé. Celui-ci permet également de se connecter et de contrôler les drones à distance et en temps réel ainsi qu'à observer des informations comme la batterie des drones ou encore leur position dans un plan.
 
