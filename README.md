@@ -99,7 +99,7 @@ Pour la réalisation de cette mesure, on a placé le drone au milieu du plan à 
 
 > Les mesures pour chaque position x,y et z ont été réalisé à une fréquence de 100 Hz pendant une minute.
 
-On remarque que la position pour chaque axe est plus ou moins précise mais cependant très instable.
+On remarque que la position pour chaque axe est plus ou moins précise mais cependant très instable lorsque le drone est immobile.
 
 
 ### Amélioration du système de contrôle de postion
@@ -114,6 +114,22 @@ Nous avons, en parallèle à notre étude des drones Crazyflie, étudié les dro
 Dans ce système, nous avons en entrée une commande de position récupérée par le controlleur qui va réaliser des calculs pour faire tourner chaque hélice indépendamment les unes des autres de sorte à ce que le drone se déplace à la position envoyer à l'entrée. Ce système est bouclé, on a un retour à l'entrée des informations que fournissent les capteurs installés sur le drone, dans le but d'améliorer le système en faisant face aux perturbations.
 
 ## Résultats du projet
+
+### Avancées réalisées au cours du projet
+
+- Mise en place des balises pour le Loco Positioning System
+- Récupération de la position du drone depuis un programme Python
+- Création d'un programme permettant le contrôle du drone en position dans la plan par commande clavier en temps réel
+- Réalisation d'un IHM permettant le contrôle et l'affichage d'informations relatives aux drones en temps réel
+
+### Perspectives d'évolution du projet
+
+- Amélioration de l'IHM
+- Contrôle de plusieurs drones en simultané
+- Amélioration de la précision et de la stabilité du Loco Positioning System
+- Amélioration de la performance du système de commande en position
+- Réalisation d'un site internet hébergeant un IHM accessible depuis un navigateur
+- Création de parcours dans le plan pour les drones 
 
 ### Images et vidéos du projet
 1er test de vol en utilisant les fonctions sur Python :
