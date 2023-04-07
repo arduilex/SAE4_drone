@@ -119,15 +119,19 @@ Dans ce système, nous avons en entrée une commande de position récupérée pa
 
 ## Résultats du projet
 
-### Vidéos des premiers tests
+### Vidéos des tests
 
-Premier vol d'un drone en utilisant les fonctions de la librairie Python fournit par Crazyflie :
+- Premier vol d'un drone en utilisant les fonctions de la librairie Python fournit par Crazyflie :
 
 https://www.youtube.com/shorts/r6u5RcOwqho
 
-Premier vol d'un drone en utilisant la fonction "linear motion" qui utilise une commande en vélocité pour le déplacement :
+- Premier vol d'un drone en utilisant la fonction "linear motion" qui utilise une commande en vélocité pour le déplacement :
 
 https://youtube.com/shorts/18h9I9uDpAo
+
+- Utilisation du programme de déplacement du drone par commande clavier dans le plan en exploitant sa position :
+
+https://drive.google.com/file/d/1BtnYzqZ73ctcumUR0VBO3GJPtGSi4TIh/view?usp=sharing
 
 ### Avancées réalisées au cours du projet
 
