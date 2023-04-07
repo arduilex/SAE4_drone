@@ -151,3 +151,6 @@ https://drive.google.com/file/d/1BtnYzqZ73ctcumUR0VBO3GJPtGSi4TIh/view?usp=shari
 
 ## Ressources annexes
 
+- Lien du Google Drive comportant toutes les images et les vidéos prisent tout au long du projet :
+
+https://drive.google.com/drive/folders/11o1TTOyGl-006VADVPh3DjFbNICb7wwu?usp=sharing
