@@ -129,7 +129,7 @@ https://www.youtube.com/shorts/r6u5RcOwqho
 
 https://youtube.com/shorts/18h9I9uDpAo
 
-- Utilisation du programme de déplacement du drone par commande clavier dans le plan en exploitant sa position :
+- Utilisation du programme de déplacement du drone par commande clavier dans le plan en exploitant sa position:
 
 https://drive.google.com/file/d/1BtnYzqZ73ctcumUR0VBO3GJPtGSi4TIh/view?usp=sharing
 
@@ -158,3 +158,23 @@ https://drive.google.com/drive/folders/11o1TTOyGl-006VADVPh3DjFbNICb7wwu?usp=sha
 - Lien Google Document du Rapport d'avancement du projet :
 
 https://docs.google.com/document/d/1HfxYyNyIje6TitpfcRkIBnB1s5yutSzWl4-dF0udWbw/edit?usp=sharing
+
+- Documentation sur les drones Crazyflie :
+
+https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/
+
+- Lien de la page d'achat du Kit Crazyflie :
+
+https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999
+
+- Lien de la page Github du firmware des drones Crazyflie
+
+https://github.com/bitcraze/crazyflie-firmware
+
+- Lien de la page Github de la librairie Python pour la communication avec les drones
+
+https://github.com/bitcraze/crazyflie-lib-python
+
+- Lien de la page Github du code source du Client Crazyflie :
+
+https://github.com/bitcraze/crazyflie-clients-python
