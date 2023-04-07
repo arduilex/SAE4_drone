@@ -145,12 +145,5 @@ https://youtube.com/shorts/18h9I9uDpAo
 - Réalisation d'un site internet hébergeant un IHM accessible depuis un navigateur
 - Création de parcours dans le plan pour les drones 
 
-### Images et vidéos du projet
-1er test de vol en utilisant les fonctions sur Python :
-https://www.youtube.com/shorts/r6u5RcOwqho
-
-1er test de vol en utilisant la fonction linear motion qui permet de controller la velocité du vol :
-https://youtube.com/shorts/18h9I9uDpAo
-
 ## Ressources annexes
 
