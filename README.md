@@ -24,15 +24,14 @@ Nous allons commencer par installer le matériel du kit Crazyflie qui nous a ét
 
 - Placer les 8 balises de position dans la salle B019.
 
-
-![figure0](images/plan_balises.jpg)
+<img src="images/plan_balises.jpg" width="720">
 
 > L'échelle du repère est en mètre.
 > Les balises 3 et 5 sont positionnées sur les 2 tableaux blancs présents dans la salle.
 
 - Connecter les modules aux batteries externes.
 
-![figure1](images/module_loco_zoom.jpg)
+<img src="images/module_loco_zoom.jpg" width="360">
 
 > Il faudra utiliser un câble USB vers micro USB pour alimenter les balises. 
 
@@ -41,13 +40,12 @@ Nous allons commencer par installer le matériel du kit Crazyflie qui nous a ét
 
 > On peut désormais s'y connecter depuis un PC, un téléphone ou une tablette
 
-![figure2](images/bouton_allumage_drone.jpg)
-
+<img src="images/bouton_allumage_drone.jpg" width="360">
 
 
 ### Commande des drones à distance
 
-![figure5](images/overview_clientsoftware.jpg)
+<img src="images/overview_clientsoftware.jpg" width="720">
 
 > La communication entre les drones et les appareils utilisant le client Crazyflie se fait, sois grâce à la Crazyradio PA connecté à un PC en USB ou avec le protocole de communication Bluetooth LE. (Plus d'informations sur https://www.bitcraze.io/documentation/system/client-and-library/)
 
@@ -61,7 +59,7 @@ Il est possible de contrôler et visualiser les différentes données envoyées 
 
 > Le tutoriel concernant les étapes d'installation de ce client est détaillé sur ce site : https://github.com/bitcraze/crazyflie-clients-python/blob/master/docs/installation/install.md
 
-![figure3](images/crazyflie_client.png)
+<img src="images/crazyflie_client.jpg" width="480">
 
 Sur le client, des informations concernant les drones et les balises peuvent être visualisées comme les valeurs du gyroscope du drone, sa batterie ou encore la puissance délivrée à chaque moteur en temps réel. Il est également possible de configurer la position des balises sur un plan en 3D et de visualiser la position du drone en temps réel dans ce plan. 
 De plus, il est possible de contrôler le drone en temps réel dans l'espace ainsi que de le faire décoller et atterrir à l'aide de boutons physiques sur le client, ou d'une manette Xbox One connectée en USB au PC, qui nous a été fournit au début du projet.
@@ -72,7 +70,7 @@ De plus, il est possible de contrôler le drone en temps réel dans l'espace ain
 
 Il est également possible d'utiliser la librairie de fonctions codé en Python disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-lib-python). En utilisant un compileur comme Visual Studio Code, on peut utiliser cette libairie pour contrôler et visualiser les données envoyées par le drone et les balises.
 
-![figure4](images/code_python.png)
+<img src="images/code_python.png" width="480">
 
 #### Utilisation de notre IHM
 
@@ -99,7 +97,7 @@ Lors de l'utilisation de fonctions de déplacement exploitant la position du dro
 
 Pour la réalisation de cette mesure, on a placé le drone au milieu du plan à 1 mètre du sol pour éviter une mesure en z non précise (la mesure n'est pas précise lorsque le drone est au sol), donc aux coordonnées x=0,y=0,z=1 (échelle en mètre). Lors de la mesure, nous avons laissé le drone à la même position.
 
-![figure7](images/mesure_des_dordonnes_pour_une_position_fixe.png)
+<img src="images/mesure_des_dordonnes_pour_une_position_fixe.png" width="720">
 
 > Les mesures pour chaque position x,y et z ont été réalisé à une fréquence de 100 Hz pendant une minute.
 
@@ -113,7 +111,7 @@ Nous avons, en parallèle à notre étude des drones Crazyflie, étudié les dro
 
 > Ceci est un exemple d'un système de contrôle de drône asservis avec un retour des informations fournies par les capteurs du drone.
 
-![figure6](images/parrot.png)
+<img src="images/parrot.png" width="720">
 
 Dans ce système, nous avons en entrée une commande de position récupérée par le controlleur qui va réaliser des calculs pour faire tourner chaque hélice indépendamment les unes des autres de sorte à ce que le drone se déplace à la position envoyer à l'entrée. Ce système est bouclé, on a un retour à l'entrée des informations que fournissent les capteurs installés sur le drone, dans le but d'améliorer le système en faisant face aux perturbations.
 
