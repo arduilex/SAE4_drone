@@ -91,7 +91,16 @@ Lors de l'utilisation de fonctions de déplacement exploitant la position du dro
 
 ### Graphiques des différents tests de performance
 
-A COMPLETER
+#### Mesures des positions lorsque le drone est immobile
+
+Pour la réalisation de cette mesure, on a placé le drone au milieu du plan à 1 mètre du sol pour éviter une mesure en z non précise (la mesure n'est pas précise lorsque le drone est au sol), donc aux coordonnées x=0,y=0,z=1 (échelle en mètre). Lors de la mesure, nous avons laissé le drone à la même position.
+
+![figure7](images/mesure_des_dordonnes_pour_une_position_fixe.png)
+
+> Les mesures pour chaque position x,y et z ont été réalisé à une fréquence de 100 Hz pendant une minute.
+
+On remarque que la position pour chaque axe est plus ou moins précise mais cependant très instable.
+
 
 ### Amélioration du système de contrôle de postion
 
