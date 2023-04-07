@@ -13,7 +13,7 @@
 
 ### Installation et initialisation du matériel 
 
-Nous allons commencer par installer le matériel du kit Crazyflie qui nous a été fournit. (https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999)
+Nous allons nous intéressé à l'installation du matériel du kit Crazyflie qui a été fournit. (https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999)
 
 - Commencer par charger les drône à l'aide d'un câble micro USB 
 > 40 minutes de charge pour passer de 0% à 100%
@@ -49,7 +49,7 @@ Nous allons commencer par installer le matériel du kit Crazyflie qui nous a ét
 
 > La communication entre les drones et les appareils utilisant le client Crazyflie se fait, sois grâce à la Crazyradio PA connecté à un PC en USB ou avec le protocole de communication Bluetooth LE. (Plus d'informations sur https://www.bitcraze.io/documentation/system/client-and-library/)
 
-> Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
+> Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python ou un IHM en même temps.
 
 
 #### Utilisation du Crazyflie Client
