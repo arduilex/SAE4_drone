@@ -51,6 +51,8 @@ Nous allons commencer par installer le matériel du kit Crazyflie qui nous a ét
 
 > La communication entre les drones et les appareils utilisant le client Crazyflie se fait, sois grâce à la Crazyradio PA connecté à un PC en USB ou avec le protocole de communication Bluetooth LE. (Plus d'informations sur https://www.bitcraze.io/documentation/system/client-and-library/)
 
+> Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
+
 
 #### Utilisation du Crazyflie Client
 
@@ -72,7 +74,9 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 
 ![figure4](images/code_python.png)
 
-> Il est important de préciser qu'il n'est pas possible de se connecter à un drone Crazyflie depuis le Crazyflie Client et un compileur Python en même temps
+#### Utilisation de notre IHM
+
+En tant qu'alternative au Crazyflie Client, il est possible d'utiliser l'IHM que nous avons réalisé. Celui-ci permet également de se connecter et de contrôler les drones à distance et en temps réel ainsi qu'à observer des informations comme la batterie des drones ou encore leur position dans un plan.
 
 
 ## Contrôle des drones dans les airs
@@ -114,6 +118,16 @@ Nous avons, en parallèle à notre étude des drones Crazyflie, étudié les dro
 Dans ce système, nous avons en entrée une commande de position récupérée par le controlleur qui va réaliser des calculs pour faire tourner chaque hélice indépendamment les unes des autres de sorte à ce que le drone se déplace à la position envoyer à l'entrée. Ce système est bouclé, on a un retour à l'entrée des informations que fournissent les capteurs installés sur le drone, dans le but d'améliorer le système en faisant face aux perturbations.
 
 ## Résultats du projet
+
+### Vidéos des premiers tests
+
+Premier vol d'un drone en utilisant les fonctions de la librairie Python fournit par Crazyflie :
+
+https://www.youtube.com/shorts/r6u5RcOwqho
+
+Premier vol d'un drone en utilisant la fonction "linear motion" qui utilise une commande en vélocité pour le déplacement :
+
+https://youtube.com/shorts/18h9I9uDpAo
 
 ### Avancées réalisées au cours du projet
 
