@@ -13,7 +13,7 @@
 
 ### Installation et initialisation du matériel 
 
-Nous allons nous intéressé à l'installation du matériel du kit [Crazyflie](https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999) qui nous a été fournit.
+Nous allons nous intéressé à l'installation du matériel du [kit Crazyflie](https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999) qui nous a été fournit.
 
 - Commencer par charger les drône à l'aide d'un câble micro USB 
 > 40 minutes de charge pour passer de 0% à 100%
