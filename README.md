@@ -95,7 +95,7 @@ Lors de l'utilisation de fonctions de déplacement exploitant la position du dro
 
 #### Mesures des positions lorsque le drone est immobile
 
-Pour la réalisation de cette mesure, on a placé le drone au milieu du plan à 1 mètre du sol pour éviter une mesure en z non précise (la mesure n'est pas précise lorsque le drone est au sol), donc aux coordonnées x=0,y=0,z=1 (échelle en mètre). Lors de la mesure, nous avons laissé le drone à la même position.
+Pour la réalisation de cette mesure, nous avons placé le drone au milieu du plan à 1 mètre du sol pour éviter une mesure en z non précise (la mesure n'est pas précise lorsque le drone est au sol), donc aux coordonnées x=0,y=0,z=1 (échelle en mètre). Lors de la mesure, nous avons laissé le drone à la même position.
 
 <img src="images/mesure_des_dordonnes_pour_une_position_fixe.png" width="720">
 
@@ -103,6 +103,18 @@ Pour la réalisation de cette mesure, on a placé le drone au milieu du plan à 
 
 On remarque que la position pour chaque axe est plus ou moins précise mais cependant très instable lorsque le drone est immobile.
 
+#### Mesures des positions lorsque le drone est en mouvement
+
+Lors de la réalisation de ces mesures, nous avons déplacé le drone dans les airs en lui envoyant des consignes de position x,y,z à l'aide de commandes clavier en temps réel.
+
+<img src="images/mesure_x.PNG" width="720">
+<img src="images/mesure_y.PNG" width="720">
+<img src="images/mesure_z.PNG" width="720">
+
+> La courbe en rouge sur les 3 graphiques représente la consigne en position envoyé au drone à l'aide des commandes du clavier.
+> Les mesures pour chaque position x,y et z (en mètre) ont été réalisé à une fréquence de 100 Hz pendant un peu plus d'une minute.
+
+Similaire aux mesures des positions lorsque le drone est immobile, on observe que le retour de position du drone est très instable en plus de ne pas être précis.
 
 ### Amélioration du système de contrôle de postion
 
