@@ -7,7 +7,6 @@ sequence. Change the URI variable to your Crazyflie configuration.
 import logging
 import time
 
-
 import cflib.crtp
 from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 from cflib.positioning.motion_commander import MotionCommander
