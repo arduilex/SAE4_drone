@@ -46,6 +46,8 @@ if __name__ == '__main__':
         pos_log=PoseLogger(scf.cf)
         pos_log._connected(URI)
         time.sleep(1)
+        #position=np.array(pos_log.position)
+        #position[2]+=1
         scf.cf.commander.set_client_xmode(True)
         end_time=time.time()+60
         val=[]
