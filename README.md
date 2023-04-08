@@ -112,6 +112,7 @@ Lors de la réalisation de ces mesures, nous avons déplacé le drone dans les a
 <img src="images/mesure_z.PNG" width="720">
 
 > La courbe en rouge sur les 3 graphiques représente la consigne en position envoyé au drone à l'aide des commandes du clavier.
+
 > Les mesures pour chaque position x,y et z (en mètre) ont été réalisé à une fréquence de 100 Hz pendant un peu plus d'une minute.
 
 Similaire aux mesures des positions lorsque le drone est immobile, on observe que le retour de position du drone est très instable en plus de ne pas être précis.
