@@ -7,7 +7,7 @@ from plan3D import Map3D
 class DroneControlApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("CrayFlie IHM")
+        self.title("CrazyFlie IHM")
         self.geometry("328x363")
         self.drone_data = {}
         colors = [
@@ -33,6 +33,7 @@ class DroneControlApp(tk.Tk):
             self.drone_data[f"Drone {i+1}"] = parametre
         self.list_connected = []
         self.selected_drone = None
+        self.trail_is_active = True
         self.var_coo_x = tk.StringVar()
         self.var_coo_y = tk.StringVar()
         self.var_coo_z = tk.StringVar()
@@ -122,18 +123,22 @@ class DroneControlApp(tk.Tk):
         info_tab_box.grid(column=1, row=0, padx=10, pady=20, sticky='n')
 
         # Ajouter l'information sur la batterie
-        self.etat_label = tk.    Label(info_tab_box, text="Etat : ??")
-        self.battery_label = tk. Label(info_tab_box, text="Batterie : ??")
-        self.signal_label = tk.  Label(info_tab_box, text="Signal : ??")
-        self.moteur_label = tk.  Label(info_tab_box, text="Moteur : arrêt")
-        position_label = tk.     Label(info_tab_box, text="Position:")
-        self.position_value = tk.Label(info_tab_box, text="x: 0cm\ny: 0cm\nz: 0cm")
+        self.etat_label =     tk.Label(info_tab_box, text="Etat : ??")
+        self.battery_label =  tk.Label(info_tab_box, text="Batterie : ??")
+        self.signal_label =   tk.Label(info_tab_box, text="Signal : ??")
+        self.moteur_label =   tk.Label(info_tab_box, text="Moteur : arrêt")
+        position_label =      tk.Label(info_tab_box, text="Position:")
+        self.position_value_x = tk.Label(info_tab_box, text="x: 0cm")
+        self.position_value_y = tk.Label(info_tab_box, text="y: 0cm")
+        self.position_value_z = tk.Label(info_tab_box, text="z: 0cm")
         self.etat_label.pack(anchor='w')
         self.battery_label.pack(anchor='w')
         self.signal_label.pack(anchor='w')
         self.moteur_label.pack(anchor='w')
         position_label.pack(anchor='w')
-        self.position_value.pack(side='left')
+        self.position_value_x.pack(anchor='w')
+        self.position_value_y.pack(anchor='w')
+        self.position_value_z.pack(anchor='w')
 
         #### Créer l'onglet position ####
         pos_tab = ttk.Frame(self.notebook)
@@ -148,11 +153,15 @@ class DroneControlApp(tk.Tk):
         pos_label.pack(pady=3)
 
         # bouton plan 3D
-        plt_button = tk.Button(frame_left, text="Ouvrir",command=self.open3D, width=8, height=2)
-        plt_button.pack(pady=3)
+        plt_button = tk.Button(frame_left, text="Ouvrir",command=self.open3D, width=8, height=1)
+        plt_button.pack()
+
+        # button clear trail
+        self.trail_button = tk.Button(frame_left, text="Trace OFF",command=self.trail_on_off, width=8, height=1)
+        self.trail_button.pack(pady=2)
 
         drone_label_title = tk.Label(frame_left, text="Légendes", font=("Arial", 13), bg='#3FAADF')
-        drone_label_title.pack(pady=5)
+        drone_label_title.pack(pady=4)
 
         drone_label_frame = tk.Frame(frame_left)
         drone_label_frame.pack()
@@ -219,7 +228,7 @@ class DroneControlApp(tk.Tk):
         forward_button    = tk.Button(direction_frame, text="Avant", command=self.forw, width=button_width, height=button_height, bg='light green')
         right_button      = tk.Button(direction_frame, text="Droite", command=self.right, width=button_width, height=button_height, bg='light green')
         down_button       = tk.Button(direction_frame, text="Arrière", command=self.backw, width=button_width, height=button_height, bg='light green')
-        self.solo_button  = tk.Button(direction_frame, text="Solo", command=self.solo_groupe, width=button_width, height=button_height-1, bg='light yellow')
+        self.solo_button  = tk.Button(direction_frame, text="Solo", command=self.solo_groupe, width=button_width, height=button_height, bg='light yellow')
         up_button       .grid(row=0, column=1, padx=5, pady=5)
         backward_button .grid(row=0, column=2, padx=5, pady=5)
         left_button     .grid(row=1, column=0, padx=5, pady=5, rowspan=2)
@@ -242,7 +251,9 @@ class DroneControlApp(tk.Tk):
         self.signal_label.config(text="Signal: "+str(self.drone_data[self.selected_drone]["signal"]))
         self.moteur_label.config(text="Moteur: "+str(self.drone_data[self.selected_drone]["moteur"]))
         x, y, z = [axe for axe in self.drone_data[self.selected_drone]["pos"]]
-        self.position_value.config(text=f"x: {x}\n y: {y}\n z: {z}")
+        self.position_value_x.config(text=f"x: {x}cm")
+        self.position_value_y.config(text=f"y: {y}cm")
+        self.position_value_z.config(text=f"z: {z}cm")
     def up(self):
         self.create_move("haut", [0, 0, 1])
     def down(self):
@@ -279,7 +290,8 @@ class DroneControlApp(tk.Tk):
             if self.drone_data[drone]["moteur"] == "en vol":
                 matrice_drone = np.array(self.drone_data[drone]["pos"])
                 matrice_move = np.array(matrice)
-                self.drone_data[drone]["pos"] = matrice_drone+matrice_move
+                # On se déplace de 10 cm par axe
+                self.drone_data[drone]["pos"] = matrice_drone+matrice_move*10
         plan3D.update_drone_position()
     def solo_groupe(self):
         if self.groupe_mode:
@@ -415,6 +427,18 @@ class DroneControlApp(tk.Tk):
     def open3D(self):
         self.log_message("ouverture de matplotlib...")
         plan3D.show_plan()
+    def trail_on_off(self):
+        # self.log_message("Supression des traces...")
+        if self.trail_is_active:
+            plan3D.clear_trail()
+            self.trail_is_active = False
+            self.trail_button.config(text="Trace ON")
+            self.log_message("Les traces sont désactivés", "info")
+        else:
+            self.trail_is_active = True
+            self.trail_button.config(text="Trace OFF")
+            self.log_message("Les traces sont activés", "info")
+        
     def log_message(self, message, level="info"):
         self.log_text.insert(tk.END, "\n["+level+"]", level)
         self.log_text.insert(tk.END, message)

@@ -1,13 +1,11 @@
-# import matplotlib
-# attention, sur linux si ça marche pas, installer:
-# sudo apt-get install python3-pil.imagetk
+from mpl_toolkits.mplot3d.art3d import Line3D
 import matplotlib.pyplot as plt
 import numpy as np
 
 class Map3D():
     def __init__(self, DroneControlApp):
         super().__init__()
-        self.app = DroneControlApp
+        self.droneApp = DroneControlApp
         self.plot_drone = {}
         self.transparent = (0, 0, 0, 0)
         self.is_open = False
@@ -38,8 +36,8 @@ class Map3D():
         self.plan.set_zlabel('Z')
         self.add_balise()
         self.add_drone()
+        self.add_drone_trail()
         plt.legend(loc="upper left")
-        plt
     def show_plan(self):
         self.is_open = True
         self.init_plot()
@@ -61,20 +59,45 @@ class Map3D():
         self.plan.scatter(0, 0, 0, color='green', marker='x', label="origine")
     def add_drone(self):
         self.plot_drone = {}
-        for drone_name in self.app.drone_data:
+        for drone_name in self.droneApp.drone_data:
             X, Y, Z = (0, 0, 0)
             self.plot_drone[drone_name] = self.plan.scatter(X, Y, Z, color=self.transparent, marker="o")
+
+    def add_drone_trail(self):
+        self.drone_trail = {}
+        for drone_name in self.droneApp.drone_data:
+            trail_color = self.droneApp.drone_data[drone_name]["color"]
+            trail, = self.plan.plot([], [], [], linestyle='--', color=trail_color, linewidth=1, alpha=0.8)
+            self.drone_trail[drone_name] = trail
     def update_drone_show(self):
         if self.is_open:
             # on met tous les dornes en transparents
-            for drone in self.app.drone_data:
+            for drone in self.droneApp.drone_data:
                 self.plot_drone[drone].set_color(self.transparent)
             # On affiche les drones connectés
-            for drone in self.app.list_connected:
-                self.plot_drone[drone].set_color(self.app.drone_data[drone]["color"])
+            for drone in self.droneApp.list_connected:
+                self.plot_drone[drone].set_color(self.droneApp.drone_data[drone]["color"])
             self.update_drone_position()
+
     def update_drone_position(self):
         if self.is_open:
-            for drone in self.app.list_connected:
-                self.plot_drone[drone]._offsets3d = [[axe/2] for axe in self.app.drone_data[drone]["pos"]]
+            for drone in self.droneApp.list_connected:
+                new_pos = [axe/100 for axe in self.droneApp.drone_data[drone]["pos"]]
+                x, y, z = new_pos
+                self.plot_drone[drone]._offsets3d = [x], [y], [z]
+                self.update_drone_trail(drone, new_pos)
                 plt.draw()
+
+    def update_drone_trail(self, drone, new_pos):
+        if self.droneApp.trail_is_active:
+            x_data, y_data, z_data = [data.tolist() for data in self.drone_trail[drone].get_data_3d()]
+            new_x, new_y, new_z = new_pos
+            x_data.append(new_x)
+            y_data.append(new_y)
+            z_data.append(new_z)
+            self.drone_trail[drone].set_data_3d(np.array(x_data), np.array(y_data), np.array(z_data))
+    def clear_trail(self):
+        if self.is_open:
+            for drone in self.droneApp.list_connected:
+                self.drone_trail[drone].set_data_3d([np.array([]) for i in range(3)])
+            plt.draw()
