@@ -86,7 +86,7 @@ En tant qu'alternative au Crazyflie Client, il est possible d'utiliser l'IHM que
   <img src="images/IHM4.png" width="360" /> 
 </p>
 
-> Les différentes vues de l'IHM
+> Les différentes vues de l'IHM.
 
 <img src="images/IHM5.png" width="720">
 
