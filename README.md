@@ -199,12 +199,12 @@ https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/
 https://store.bitcraze.io/products/the-swarm-bundle?variant=39540519206999
 
 
-- Lien de la page Github du firmware des drones Crazyflie
+- Lien de la page Github du firmware des drones Crazyflie :
 
 https://github.com/bitcraze/crazyflie-firmware
 
 
-- Lien de la page Github de la librairie Python pour la communication avec les drones
+- Lien de la page Github de la librairie Python pour la communication avec les drones :
 
 https://github.com/bitcraze/crazyflie-lib-python
 
