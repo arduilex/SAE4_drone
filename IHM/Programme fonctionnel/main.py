@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import numpy as np
 from random import randint
 from plan3D import Map3D
 
@@ -9,23 +10,34 @@ class DroneControlApp(tk.Tk):
         self.title("CrayFlie IHM")
         self.geometry("328x363")
         self.drone_data = {}
+        colors = [
+            "#FF0000",  # Rouge
+            "#00FF00",  # Vert
+            "#0000FF",  # Bleu
+            "#FFFF00",  # Jaune
+            "#00FFFF",  # Cyan
+            "#FF00FF",  # Magenta
+            "#FFA500",  # Orange
+            "#800080",  # Violet
+            "#A52A2A"   # Marron
+            ]
         for i in range(9):
-            dict = {
+            parametre = {
                 "batterie": "??",
                 "etat": "déconnecté",
                 "signal": "??",
-                "pos": [0, 0, 0]
+                "moteur":"arrêt",
+                "pos": [0, 0, 0],
+                "color": colors[i]
             }
-            self.drone_data[f"Drone {i+1}"] = dict
-        self.total_connect = 0
+            self.drone_data[f"Drone {i+1}"] = parametre
+        self.list_connected = []
+        self.selected_drone = None
         self.var_coo_x = tk.StringVar()
         self.var_coo_y = tk.StringVar()
         self.var_coo_z = tk.StringVar()
-        self.set_position = [0]*3
-        self.decollage = False
-        self.solo_mode = True
+        self.groupe_mode = False
         self.create_widgets()
-
     def create_widgets(self):
         # Créer un widget Notebook pour les onglets
         self.notebook = ttk.Notebook(self)
@@ -48,11 +60,9 @@ class DroneControlApp(tk.Tk):
         self.log_text.insert(tk.END, "[info]", "info")
         self.log_text.insert(tk.END, "Ici, s'affiche les log")
 
-
-
-        #### Créer l'onglet Select  ####
+        #### Créer l'onglet Connect  ####
         select_tab = ttk.Frame(self.notebook)
-        self.notebook.add(select_tab, text="Select")
+        self.notebook.add(select_tab, text="Connect")
 
         # Frame pour les boutons directionnels
         select_frame = tk.Frame(select_tab, bg="light blue", width=130, height=254)
@@ -96,65 +106,79 @@ class DroneControlApp(tk.Tk):
         all_check_button = tk.Button(action_frame, text="TOUT",command=self.select_all, bg="light blue")
         all_check_button.pack(pady=4, side='bottom')
 
-        ### Créer l'onglet Infos  ####
+        ### Créer l'onglet Selection  ####
         info_tab = ttk.Frame(self.notebook)
-        self.notebook.add(info_tab, text="Infos")
+        self.notebook.add(info_tab, text="Select")
 
         # Ajouter une liste de drones à l'onglet Infos
         self.drone_list = tk.Listbox(info_tab)
         self.drone_list.grid(column=0, row=0, padx=10, pady=10)
 
         # Ajouter un événement de liaison à la liste des drones pour détecter les changements de sélection
-        self.drone_list.bind("<<ListboxSelect>>", self.update_drone_info)
+        self.drone_list.bind("<<ListboxSelect>>", self.event_select_drone)
 
         # ajout d'une box à droite de la liste
         info_tab_box = tk.Frame(info_tab)
         info_tab_box.grid(column=1, row=0, padx=10, pady=20, sticky='n')
 
         # Ajouter l'information sur la batterie
-        self.etat_label = tk.Label(info_tab_box, text="Etat : ??")
-        self.battery_label = tk.Label(info_tab_box, text="Batterie : ??")
-        self.signal_label = tk.Label(info_tab_box, text="Signal : ??")
-        position_label = tk.Label(info_tab_box, text="Position:")
+        self.etat_label = tk.    Label(info_tab_box, text="Etat : ??")
+        self.battery_label = tk. Label(info_tab_box, text="Batterie : ??")
+        self.signal_label = tk.  Label(info_tab_box, text="Signal : ??")
+        self.moteur_label = tk.  Label(info_tab_box, text="Moteur : arrêt")
+        position_label = tk.     Label(info_tab_box, text="Position:")
         self.position_value = tk.Label(info_tab_box, text="x: 0cm\ny: 0cm\nz: 0cm")
         self.etat_label.pack(anchor='w')
         self.battery_label.pack(anchor='w')
         self.signal_label.pack(anchor='w')
+        self.moteur_label.pack(anchor='w')
         position_label.pack(anchor='w')
         self.position_value.pack(side='left')
-
 
         #### Créer l'onglet position ####
         pos_tab = ttk.Frame(self.notebook)
         self.notebook.add(pos_tab, text="Position")
 
         # Frame pour les boutons directionnels
-        frame1 = tk.Frame(pos_tab, bg="light blue", width=130, height=254)
-        frame1.grid(column=0, row=0, padx=18, pady=10)
-        frame1.pack_propagate(0)
+        frame_left = tk.Frame(pos_tab, bg="light blue", width=130, height=254)
+        frame_left.grid(column=0, row=0, padx=18, pady=10)
+        frame_left.pack_propagate(0)
 
-        pos_label = tk.Label(frame1, text="MatPlotLib", font=("Arial", 13), bg='#3FAADF')
+        pos_label = tk.Label(frame_left, text="Plan 3D", font=("Arial", 13), bg='#3FAADF')
         pos_label.pack(pady=3)
 
         # bouton plan 3D
-        plt_button = tk.Button(frame1, text="Plan 3D",command=self.open3D, width=8, height=2)
+        plt_button = tk.Button(frame_left, text="Ouvrir",command=self.open3D, width=8, height=2)
         plt_button.pack(pady=3)
 
-        frame2 = tk.Frame(pos_tab, bg="light blue", width=130, height=254)
-        frame2.grid(column=1, row=0, padx=10, pady=10)
+        drone_label_title = tk.Label(frame_left, text="Légendes", font=("Arial", 13), bg='#3FAADF')
+        drone_label_title.pack(pady=5)
 
-        frame2.pack_propagate(0)
+        drone_label_frame = tk.Frame(frame_left)
+        drone_label_frame.pack()
 
-        pos_label = tk.Label(frame2, text="Coordonnées", font=("Arial", 13), bg='#3FAADF')
+        # frame des drones connecté
+        frame_connected_drone = tk.Frame(frame_left, bg="light blue")
+        frame_connected_drone.pack()
+        self.legend_label = []
+        for name, data in self.drone_data.items():
+            self.legend_label.append(tk.Label(frame_connected_drone, text=name, bg=data["color"]))
+        # dexieme partie (droite) de la fenêtre
+        frame_right = tk.Frame(pos_tab, bg="light blue", width=130, height=254)
+        frame_right.grid(column=1, row=0, padx=10, pady=10)
+
+        frame_right.pack_propagate(0)
+
+        pos_label = tk.Label(frame_right, text="Coordonnées", font=("Arial", 13), bg='#3FAADF')
         pos_label.pack(pady=3)
 
-        frame_xyz_set = tk.Frame(frame2)
+        frame_xyz_set = tk.Frame(frame_right)
         frame_xyz_set.pack(pady=3)
         # entrée coordonnées x
         frame_x_live = tk.Frame(frame_xyz_set)
         frame_x_live.pack()
         tk.Label(frame_x_live, text="X", font=("Arial", 14)).pack(side="left")
-        entry_posx = tk.Entry(frame_x_live, show="12", width=6, textvariable=self.var_coo_x)
+        entry_posx = tk.Entry(frame_x_live, width=6, textvariable=self.var_coo_x)
         entry_posx.pack(side="left")
         tk.Label(frame_x_live, text="cm", font=("Arial", 10)).pack(side="left")
         # entrée coordonnées y
@@ -172,10 +196,8 @@ class DroneControlApp(tk.Tk):
         entry_posz.pack(side="left")
         tk.Label(frame_z_live, text="cm", font=("Arial", 10)).pack(side="left")
 
-        valide_coo_button = tk.Button(frame2, text="Valider", command=self.valide_coo, bg="light green")
+        valide_coo_button = tk.Button(frame_right, text="Valider", command=self.valide_coo, bg="light green")
         valide_coo_button.pack(pady=6)
-
-
 
         #### Créer l'onglet Controle ####
         map_tab = ttk.Frame(self.notebook)
@@ -190,90 +212,111 @@ class DroneControlApp(tk.Tk):
         button_height = 2
 
         # Boutons directionnels
-        self.decol_button = tk.Button(direction_frame, text="Décollage", command=self.lift_off, width=button_width, height=button_height, bg='red')
+        self.lift_button  = tk.Button(direction_frame, text="Décollage", command=self.lift_off, width=button_width, height=button_height, bg='red')
         up_button         = tk.Button(direction_frame, text="Haut", command=self.up, width=button_width, height=button_height, bg='light blue')
         backward_button   = tk.Button(direction_frame, text="Bas", command=self.down, width=button_width, height=button_height, bg='light blue')
         left_button       = tk.Button(direction_frame, text="Gauche", command=self.left, width=button_width, height=button_height, bg='light green')
         forward_button    = tk.Button(direction_frame, text="Avant", command=self.forw, width=button_width, height=button_height, bg='light green')
         right_button      = tk.Button(direction_frame, text="Droite", command=self.right, width=button_width, height=button_height, bg='light green')
         down_button       = tk.Button(direction_frame, text="Arrière", command=self.backw, width=button_width, height=button_height, bg='light green')
-        self.solo_button       = tk.Button(direction_frame, text="Solo", command=self.solo_groupe, width=button_width, height=button_height, bg='light yellow')
-        self.decol_button.grid(row=0, column=1, padx=5, pady=5)
-        up_button.grid(row=0, column=2, padx=5, pady=5)
-        backward_button.grid(row=0, column=0, padx=5, pady=5)
-        left_button.grid(row=1, column=0, padx=5, pady=5, rowspan=2)
-        forward_button.grid(row=1, column=1, padx=5, pady=5)
-        right_button.grid(row=1, column=2, padx=5, pady=5, rowspan=2)
-        down_button.grid(row=2, column=1, padx=5, pady=5)
+        self.solo_button  = tk.Button(direction_frame, text="Solo", command=self.solo_groupe, width=button_width, height=button_height-1, bg='light yellow')
+        up_button       .grid(row=0, column=1, padx=5, pady=5)
+        backward_button .grid(row=0, column=2, padx=5, pady=5)
+        left_button     .grid(row=1, column=0, padx=5, pady=5, rowspan=2)
+        right_button    .grid(row=1, column=2, padx=5, pady=5, rowspan=2)
+        forward_button  .grid(row=1, column=1, padx=5, pady=5)
+        down_button     .grid(row=2, column=1, padx=5, pady=5)
+        self.lift_button.grid(row=0, column=0, padx=5, pady=5)
         self.solo_button.grid(row=3, column=2, padx=5, pady=5)
-    def update_drone_info(self, event):
-        # Exemple de données de batterie pour chaque drone
-        # on vérifie d'abord que l'onglet actif est bien le 2eme, et qu'au moins 1 dorne est sélectionné 
+    def event_select_drone(self, event):
+        # on vérifie d'abord que l'onglet actif est bien le 2eme, et qu'au moins 1 drone est sélectionné 
         if self.notebook.index(self.notebook.select()) == 1 and self.is_check():
             self.selected_drone = self.drone_list.get(self.drone_list.curselection())
-            self.drone_list.selection_anchor(0)
-            self.etat_label.config(text="Etat : "+self.drone_data[self.selected_drone]["etat"])
-            self.battery_label.config(text="Batterie: "+str(self.drone_data[self.selected_drone]["batterie"])+"%")
-            self.signal_label.config(text="Signal: "+str(self.drone_data[self.selected_drone]["signal"]))
-            x, y, z = [axe for axe in self.drone_data[self.selected_drone]["pos"]]
-            self.position_value.config(text=f"x: {x}\n y: {y}\n z: {z}")
+            self.update_drone_info()
+            self.update_decollage_info()
             self.log_message(self.selected_drone+" sélectionné")
-        elif self.notebook.index(self.notebook.select()) == 1:
-            self.selected_drone = None
-
+    def update_drone_info(self):
+        self.drone_list.selection_anchor(0)
+        self.etat_label.config(text="Etat : "+self.drone_data[self.selected_drone]["etat"])
+        self.battery_label.config(text="Batterie: "+str(self.drone_data[self.selected_drone]["batterie"])+"%")
+        self.signal_label.config(text="Signal: "+str(self.drone_data[self.selected_drone]["signal"]))
+        self.moteur_label.config(text="Moteur: "+str(self.drone_data[self.selected_drone]["moteur"]))
+        x, y, z = [axe for axe in self.drone_data[self.selected_drone]["pos"]]
+        self.position_value.config(text=f"x: {x}\n y: {y}\n z: {z}")
     def up(self):
-        if self.decollage:
-            self.log_message("Déplacement vers le haut")
-        else:
-            self.log_message("Impossible sans décollage", "error")
+        self.create_move("haut", [0, 0, 1])
     def down(self):
-        if self.decollage:
-            self.log_message("Déplacement vers le bas")
-        else:
-            self.log_message("Impossible sans décollage", "error")
+        self.create_move("bas", [0, 0, -1])
     def left(self):
-        if self.decollage:
-            self.log_message("Déplacement à gauche")
-        else:
-            self.log_message("Impossible sans décollage", "error")
+        self.create_move("gauche", [-1, 0, 0])
     def right(self):
-        if self.decollage:
-            self.log_message("Déplacement à droite")
-        else:
-            self.log_message("Impossible sans décollage", "error")
+        self.create_move("droit", [1, 0, 0])
     def forw(self):
-        if self.decollage:
-            self.log_message("Déplacement en avant")
-        else:
-            self.log_message("Impossible sans décollage", "error")
+        self.create_move("avant", [0, 1, 0])
     def backw(self):
-        if self.decollage:
-            self.log_message("Déplacement en arrière")
+        self.create_move("arrière", [0, -1, 0])
+    def create_move(self, direction, matrice):
+        if self.groupe_mode:
+            if len(self.list_connected):
+                self.move_drone(matrice, self.list_connected)
+                self.log_message("Déplacement "+direction, "info")
+            else:
+                self.log_message("Aucun drone connecté...", "error")
         else:
-            self.log_message("Impossible sans décollage", "error")
+            if self.selected_drone:
+                if self.drone_data[self.selected_drone]["moteur"] == "en vol":
+                    used = self.selected_drone
+                    self.move_drone(matrice, [used])
+                    self.update_drone_info()
+                    self.log_message(f"Déplacement {used} {direction}", "info")
+                    self.log_message(f"Nouvelle position {self.drone_data[used]['pos']}")
+                else:
+                   self.log_message("Décollage requis...", "error")
+            else:
+                self.log_message("Aucun drone sélectionné...", "error")
+    def move_drone(self, matrice, move_list):
+        for drone in move_list:
+            if self.drone_data[drone]["moteur"] == "en vol":
+                matrice_drone = np.array(self.drone_data[drone]["pos"])
+                matrice_move = np.array(matrice)
+                self.drone_data[drone]["pos"] = matrice_drone+matrice_move
+        plan3D.update_drone_position()
     def solo_groupe(self):
-        if self.solo_mode:
-            self.solo_mode = False
-            self.solo_button.config(text="Groupe", bg="yellow")
-            self.log_message("Tous les drones connectés se déplaces ensembles", "warn")
-        else:
-            self.solo_mode = True
+        if self.groupe_mode:
+            self.groupe_mode = False
+            self.selected_drone = None
             self.solo_button.config(text="Solo", bg="light yellow")
             self.log_message("Seul le drone sélectionné se déplace", "warn")
-    def lift_off(self):
-        if self.decollage:
-            self.decollage = False
-            self.log_message("Atterrissage !", "warn")
-            self.decol_button.config(text="Décollage", bg="red")
-        elif self.total_connect:
-            if not self.solo_mode or self.selected_drone:
-                self.decollage = True
-                self.log_message("Décollage !", "warn")
-                self.decol_button.config(text="Atterrissage", bg="green")
-            else:
-                self.log_message("Aucun dorne sélectionné !", "error")
         else:
-            self.log_message("Aucun drone connecté !", "error")
+            self.groupe_mode = True
+            self.selected_drone = None
+            self.solo_button.config(text="Groupe", bg="yellow")
+            self.log_message("Tous les drones connectés se déplaces ensembles", "warn")
+    def lift_off(self):
+        if not self.groupe_mode:
+            if self.selected_drone:
+                if self.drone_data[self.selected_drone]["etat"] == "connecté":
+                    if self.drone_data[self.selected_drone]["moteur"] == "en vol":
+                        self.log_message("Atterrissage !", "warn")
+                        self.drone_data[self.selected_drone]["moteur"] = "arrêt"
+                        self.drone_data[self.selected_drone]["pos"][2] = 0
+                    else:
+                        self.log_message("Décollage !", "warn")
+                        self.drone_data[self.selected_drone]["moteur"] = "en vol"
+                    self.update_decollage_info()
+                    self.update_drone_info()
+                    plan3D.update_drone_position()
+                else:
+                    self.log_message("Le drone sélectionné est déconnecté !", "error")
+            else:
+                self.log_message("Aucun drone sélectionné !", "error")
+        else:
+            self.log_message("Impossible avec un groupe de drone !", "error")
+    def update_decollage_info(self):
+        if self.drone_data[self.selected_drone]["moteur"] == "en vol":
+            self.lift_button.config(text="Atterrissage", bg="green")
+        else:
+            self.lift_button.config(text="Décollage", bg="red")
     def drone_connect(self):
         if self.is_check():
             total_check = 0
@@ -283,7 +326,9 @@ class DroneControlApp(tk.Tk):
                     self.drone_data[name]["etat"]   = "connecté"
                     self.drone_data[name]["batterie"] = randint(10, 100)
                     self.drone_data[name]["signal"] = ["médiocre", "mauvais", "moyen", "bon", "parfait"][randint(0, 4)]
-            self.total_connect = self.count_connected()
+            self.count_connected()
+            self.show_legend_drone()
+            plan3D.update_drone_show()
             self.log_message(f"{total_check} drones ont été connectés")
             self.selected_drone = None
         else:
@@ -291,23 +336,25 @@ class DroneControlApp(tk.Tk):
     def drone_disconnect(self):
         if self.is_check():
             total_check = 0
+            # je veux mourir 
             for name in self.drone_check:
                 if self.drone_check[name].get():
                     total_check += 1
                     self.drone_data[name]["etat"] = "déconnecté"
                     self.drone_data[name]["batterie"] = "??"
                     self.drone_data[name]["signal"] = "??"
-            self.total_connect = self.count_connected()
+            self.count_connected()
+            plan3D.update_drone_show()
             self.log_message(f"{total_check} drones ont été déconnectés")
+            self.show_legend_drone()
             self.selected_drone = None
         else:
             self.log_message("Aucun drones sélectionnés", "error")
-    def count_connected(self) -> int:
-        total = 0
+    def count_connected(self):
+        self.list_connected = []
         for drone in self.drone_data.keys():
             if self.drone_data[drone]["etat"] == "connecté":
-                total +=1
-        return total
+                self.list_connected.append(drone)
     def is_check(self):
         return sum([self.drone_check[name].get() for name in self.drone_check])
     def select_connect(self):
@@ -325,22 +372,49 @@ class DroneControlApp(tk.Tk):
             for name in self.drone_check:
                 self.drone_check[name].set(True)
         self.update_use_drone()
+    def show_legend_drone(self):
+        self.hide_legend_drone()
+        i = 0
+        for label_name in self.legend_label:
+            if label_name.cget("text") in self.list_connected:
+                if i < 5:
+                    label_name.grid(column=0, row=i)
+                else:
+                    label_name.grid(column=1, row=i-5)
+                i += 1
+    def hide_legend_drone(self):
+        for label in self.legend_label:
+            label.grid_forget()
     def update_use_drone(self):
+        self.selected_drone = None
         self.drone_list.delete(0, tk.END)
         for name in self.drone_check:
             if self.drone_check[name].get():
                 self.drone_list.insert(tk.END, name)
     def valide_coo(self):
         try:
-            self.set_position[0] = int(self.var_coo_x.get())
-            self.set_position[1] = int(self.var_coo_y.get())
-            self.set_position[2] = int(self.var_coo_z.get())
-            self.log_message("nouvelles\ncoordonnées: "+str(self.set_position), 'info')
+            set_position = [0]*3
+            set_position[0] = int(self.var_coo_x.get())
+            set_position[1] = int(self.var_coo_y.get())
+            set_position[2] = int(self.var_coo_z.get())
+            if len(self.list_connected) and self.selected_drone:
+                if self.drone_data[self.selected_drone]["etat"] == "connecté":
+                    if self.drone_data[self.selected_drone]["moteur"] == "en vol":
+                        self.drone_data[self.selected_drone]["pos"] = set_position
+                        self.log_message("nouvelle position "+str(set_position), 'info')
+                        self.update_drone_info()
+                        plan3D.update_drone_position()
+                    else:
+                        self.log_message("Décollage requis !", "error")
+                else:
+                    self.log_message("Le drone sélectionné est déconnecté !", "error")
+            else:
+                self.log_message("Connexion ou sélection manquante !", "error")
         except:
-            self.log_message("coordonées non valide", "error")
+                self.log_message("coordonées non valide", "error")
     def open3D(self):
         self.log_message("ouverture de matplotlib...")
-        matplotlib.open_plot()
+        plan3D.show_plan()
     def log_message(self, message, level="info"):
         self.log_text.insert(tk.END, "\n["+level+"]", level)
         self.log_text.insert(tk.END, message)
@@ -348,13 +422,14 @@ class DroneControlApp(tk.Tk):
 
 if __name__ == "__main__":
     app = DroneControlApp()
-    matplotlib = Map3D(app)
+    plan3D = Map3D(app)
     app.mainloop()
 
 
 # si un drone va en dehors de la zone mettre un warn
-# a faire : 
-# géré le select lors du premier démarrage [OK]
+# à faire : 
+# gérer le select lors du premier démarrage [OK]
 # commencer a edit les positions sur matplot
 #   -> plot les drones connectés 
 #   -> possible de déplot un point ???
+#   -> gérer quelle drone est touché dans l'onglet conntrôle...
