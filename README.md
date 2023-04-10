@@ -57,7 +57,7 @@ Nous allons nous intéressé à l'installation du matériel du [kit Crazyflie](h
 
 Il est possible de contrôler et visualiser les différentes données envoyées par le drone et les balises en passant par le client fournis par Crazyflie. Ce client est disponible sur le [Github de Crazyflie](https://github.com/bitcraze/crazyflie-clients-python). Il existe différentes versions pouvant être exécutées sur différentes plateformes comme un PC sous Windows, Linux ou Mac et des appareils sous Android ou iOS. Nous nous intéresserons au client réservé à l'utilisation sur un PC.
 
-> Le tutoriel concernant les étapes d'installation de ce client est détaillé sur ce site : https://github.com/bitcraze/crazyflie-clients-python/blob/master/docs/installation/install.md
+> Le tutoriel concernant les étapes d'installation de ce client est détaillé sur [ce site]( https://github.com/bitcraze/crazyflie-clients-python/blob/master/docs/installation/install.md)
 
 <img src="images/crazyflie_client.png" width="480">
 
@@ -68,7 +68,7 @@ De plus, il est possible de contrôler le drone en temps réel dans l'espace ain
 #### Utilisation d'un programme Python
 
 
-Il est également possible d'utiliser la librairie de fonctions codé en Python disponible sur le Github de Crazyflie (https://github.com/bitcraze/crazyflie-lib-python). En utilisant un compileur comme Visual Studio Code, on peut utiliser cette libairie pour contrôler et visualiser les données envoyées par le drone et les balises.
+Il est également possible d'utiliser la librairie de fonctions codé en Python disponible sur le [Github de Crazyflie](https://github.com/bitcraze/crazyflie-lib-python). En utilisant un compileur comme Visual Studio Code, on peut utiliser cette libairie pour contrôler et visualiser les données envoyées par le drone et les balises.
 
 <img src="images/code_python.png" width="480">
 
@@ -77,18 +77,18 @@ Il est également possible d'utiliser la librairie de fonctions codé en Python 
 En tant qu'alternative au Crazyflie Client, il est possible d'utiliser l'IHM que nous avons réalisé. Celui-ci permet également de se connecter et de contrôler les drones à distance et en temps réel ainsi qu'à observer des informations comme la batterie des drones ou encore leur position dans un plan.
 
 <p float="left">
-  <img src="images/IHM1.png" width="360" />
-  <img src="images/IHM2.png" width="360" /> 
+  <img src="images/connect.png" width="360" />
+  <img src="images/select.png" width="360" /> 
 </p>
 
 <p float="left">
-  <img src="images/IHM3.png" width="360" />
-  <img src="images/IHM4.png" width="360" /> 
+  <img src="images/position.png" width="360" />
+  <img src="images/controle.png" width="360" /> 
 </p>
 
 > Les différentes vues de l'IHM.
 
-<img src="images/IHM5.png" width="720">
+<img src="images/plan3D.png" width="720">
 
 > Plan en 3D affichant la position des balises affectée par l'utilisateur ainsi que la position des drones.
 
