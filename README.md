@@ -165,7 +165,7 @@ https://drive.google.com/file/d/1BtnYzqZ73ctcumUR0VBO3GJPtGSi4TIh/view?usp=shari
 
 - Mise en place des balises pour le Loco Positioning System
 - Récupération de la position du drone depuis un programme Python
-- Création d'un programme permettant le contrôle du drone en position dans la plan par commande clavier en temps réel
+- Création d'un programme permettant le contrôle du drone en position dans un plan par commande clavier en temps réel
 - Réalisation d'un IHM permettant le contrôle et l'affichage d'informations relatives aux drones en temps réel
 
 ### Perspectives d'évolution du projet
